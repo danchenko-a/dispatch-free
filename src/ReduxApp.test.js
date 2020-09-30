@@ -1,7 +1,7 @@
 import React from "react";
 import { screen, fireEvent, render, waitFor } from "@testing-library/react";
 
-import App from "./App";
+import ReduxApp from "./ReduxApp";
 
 jest.mock("./services", () => {
   return {
@@ -11,9 +11,9 @@ jest.mock("./services", () => {
   };
 });
 
-describe("App integration", () => {
+describe("ReduxApp integration", () => {
   it("should handle successfull data loading", async () => {
-    render(<App />);
+    render(<ReduxApp />);
 
     expect(screen.getByText("Loading is done!")).toBeInTheDocument();
     expect(screen.getByRole("button")).not.toBeDisabled();

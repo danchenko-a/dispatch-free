@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { render, screen } from "@testing-library/react";
 
 import ReduxContainer from "./index";
-import createStore from "../store";
+import createStore from "../reduxStore";
 
 jest.mock("../View", () => {
   return () => <div>View mock</div>;

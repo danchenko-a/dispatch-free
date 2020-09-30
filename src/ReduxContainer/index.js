@@ -2,12 +2,12 @@ import { connect } from "react-redux";
 
 import View from "../View";
 
-import loadData from "../store/loadData";
+import loadData from "../reduxStore/loadData";
 
 const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = {
-  loadData
+  loadData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(View);
