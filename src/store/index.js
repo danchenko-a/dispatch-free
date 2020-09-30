@@ -6,7 +6,11 @@ import reducers from "./reducers";
 const logger = createLogger({ collapsed: false });
 
 const createStore = () => {
-  const middlewares = [thunk, logger];
+  const middlewares = [thunk];
+
+  if (process.env.NODE_ENV !== "test") {
+    middlewares.push(logger);
+  }
 
   return create(reducers, compose(applyMiddleware(...middlewares)));
 };

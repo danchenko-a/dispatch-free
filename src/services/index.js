@@ -5,9 +5,7 @@ const sleep = (ms) =>
     }, ms);
   });
 
-export default {
-  async fetch() {
-    await sleep(2500);
-    return ["Taras", "Yulia", "Maks", "Dima", "Dima", "Andrey"];
-  }
-};
+export async function fetchData() {
+  await sleep(2500);
+  return ["Taras", "Yulia", "Maks", "Dima", "Dima", "Andrey"];
+}

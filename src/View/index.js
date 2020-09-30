@@ -5,7 +5,7 @@ const View = ({ loading = false, data = [], loadData }) => {
     <div>
       <p>Loading is {loading ? "in process" : "done"}!</p>
       <button onClick={loadData} disabled={loading}>
-        Load teammembers
+        Load team members
       </button>
       <p>Team members are:</p>
       {!data.length && <p>empty...</p>}
