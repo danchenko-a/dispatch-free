@@ -130,5 +130,30 @@ yarn test
 ```
 и увидеть, что они усешно проходят для приложений с разными state-менеджерами (Redux и MobX), которые при этом используют один и тот же презентационный компонент, так как он не привязан к конкретной реализации слоя данных приложения.
 
-## А как быть с useSelector и useDispatch?
+## Как быть с useSelector и useDispatch?
 По-моему, эти хуки точно так же привязывают компонент к реализации state-менеджера, как и прямое пробрасывание диспатча, и создают необходимость писать лишний boilerplate во время написания тестов.
+
+## Как быть, если мой презентационный компонент оборачивается в контейнер в том же файле, в котором определяется?
+В таком случае презентационный компонент экспортируется, как именованный экспорт, а default-ный экспорт уже завернут в `connect`. Тогда мы сможем импортировать презентационный компонент по имени для unit-тестов без моков и провайдеров:
+```javascript
+// scr/Example.js
+import React from "react";
+import { connect } from "react-redux";
+
+const mapStateToProps = state => ({
+  // some selectors
+ });
+ 
+const mapDispatchToPrps = {
+  // thunks
+};
+
+export const View = (props) => {
+  return <YourViewJSX />;
+}
+
+export default connect(mapStateToProps, mapDispatchToPrps)(View);
+
+// src/Example.test.js
+import { View } from "./Example";
+```
